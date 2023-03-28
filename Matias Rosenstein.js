@@ -95,7 +95,7 @@ class ComprobanteDeFactura{
     }
 
     get getImporte(){
-        return this.calcularTotalFactura();
+        return this.#importe;
     }
 
     get getListaDeItems(){
@@ -113,7 +113,7 @@ class ComprobanteDeFactura{
 }
 
 const items = [
-    {cantidad:5, desc:"Coca Cola", precio:250},
+    {cantidad:6, desc:"Coca Cola", precio:250},
     {cantidad:2, desc:"Pepsi", precio:200},
     {cantidad:10, desc:"Alfajor", precio:150}
 ];
