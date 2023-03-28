@@ -86,6 +86,22 @@ class ComprobanteDeFactura{
         this.#importe = 0;
     }
 
+    get getId(){
+        return this.#id;
+    }
+
+    get getFecha(){
+        return this.#fecha;
+    }
+
+    get getImporte(){
+        return this.calcularTotalFactura();
+    }
+
+    get getListaDeItems(){
+        return this.#listaDeItems;
+    }
+
     calcularTotalFactura = () => {
         this.#listaDeItems.forEach(item => {
             this.#importe += item.cantidad * item.precio;
@@ -96,11 +112,11 @@ class ComprobanteDeFactura{
 }
 
 const items = [
-    {cantidad:5, desc:"Coca Cola", precio:250},
+    {cantidad:6, desc:"Coca Cola", precio:250},
     {cantidad:2, desc:"Pepsi", precio:200},
     {cantidad:10, desc:"Alfajor", precio:150}
 ];
 
 const comprobante = new ComprobanteDeFactura(1, "27 de Marzo", items);
 
-console.log(comprobante.calcularTotalFactura());
+console.log("La factura " + comprobante.getId + " del " + comprobante.getFecha + " tiene un importe de $" + comprobante.getImporte);
