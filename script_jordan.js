@@ -52,18 +52,18 @@ const polizas = [
 
 const polizasConCuotasEnDeuda = [];
 
-for (const poliza of polizas) {
+polizas.forEach((pol) => {
 
-  const cuotasEnDeuda = poliza.cantidad_cuotas - poliza.pagadas.length;
+  const cuotasEnDeuda = pol.cantidad_cuotas - pol.pagadas.length;
   const polizaConCuotasEnDeuda = {
 
-    poliza: poliza.poliza,
-    patente: poliza.patente,
-    cantidad_cuotas: poliza.cantidad_cuotas,
+    poliza: pol.poliza,
+    patente: pol.patente,
+    cantidad_cuotas: pol.cantidad_cuotas,
     cuotas_en_deuda: cuotasEnDeuda
   };
   polizasConCuotasEnDeuda.push(polizaConCuotasEnDeuda);
-}
+})
 
 console.log(polizasConCuotasEnDeuda);
 
