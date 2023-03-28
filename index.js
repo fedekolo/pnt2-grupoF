@@ -145,45 +145,75 @@
 // }
 // console.log(objetoResultadosConFor);
 
-let polizas = [
-  {
-    poliza: 123,
-    patente: "AA345FD",
-    cantidad_cuotas: 12,
-    pagadas: [1, 2, 3, 4],
-  },
-  {
-    poliza: 124,
-    patente: "AA500RR",
-    cantidad_cuotas: 6,
-    pagadas: [1, 2, 3, 4],
-  },
-  {
-    poliza: 125,
-    patente: "AA200AA",
-    cantidad_cuotas: 12,
-    pagadas: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-  },
-  { poliza: 126, patente: "AA300SH", cantidad_cuotas: 8, pagadas: [1, 2] },
-];
+// let polizas = [
+//   {
+//     poliza: 123,
+//     patente: "AA345FD",
+//     cantidad_cuotas: 12,
+//     pagadas: [1, 2, 3, 4],
+//   },
+//   {
+//     poliza: 124,
+//     patente: "AA500RR",
+//     cantidad_cuotas: 6,
+//     pagadas: [1, 2, 3, 4],
+//   },
+//   {
+//     poliza: 125,
+//     patente: "AA200AA",
+//     cantidad_cuotas: 12,
+//     pagadas: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+//   },
+//   { poliza: 126, patente: "AA300SH", cantidad_cuotas: 8, pagadas: [1, 2] },
+// ];
 
-let polizasEnDeuda = [];
+// let polizasEnDeuda = [];
 
-for (let i = 0; i < polizas.length; i++) {
-  let cuotasPagadas = polizas[i].pagadas;
-  let cuotasEnDeuda = [];
+// for (let i = 0; i < polizas.length; i++) {
+//   let cuotasPagadas = polizas[i].pagadas;
+//   let cuotasEnDeuda = [];
 
-  for (let j = 1; j <= polizas[i].cantidad_cuotas; j++) {
-    if (!cuotasPagadas.includes(j)) {
-      cuotasEnDeuda.push(j);
-    }
+//   for (let j = 1; j <= polizas[i].cantidad_cuotas; j++) {
+//     if (!cuotasPagadas.includes(j)) {
+//       cuotasEnDeuda.push(j);
+//     }
+//   }
+
+//   polizasEnDeuda.push({
+//     poliza: polizas[i].poliza,
+//     patente: polizas[i].patente,
+//     cuotas_en_deuda: cuotasEnDeuda,
+//   });
+// }
+
+// console.log(polizasEnDeuda);
+
+
+class ComprobanteFactura {
+  constructor(id, fecha, importe, listaDeItems) {
+    this.id = id;
+    this.fecha = fecha;
+    this.importe = importe;
+    this.listaDeItems = listaDeItems;
   }
 
-  polizasEnDeuda.push({
-    poliza: polizas[i].poliza,
-    patente: polizas[i].patente,
-    cuotas_en_deuda: cuotasEnDeuda,
-  });
+  calcularTotal() {
+    let total = 0;
+    for (let i = 0; i < this.listaDeItems.length; i++) {
+      total +=
+        this.listaDeItems[i].cantidad * this.listaDeItems[i].precioUnitario;
+    }
+    return total;
+  }
 }
 
-console.log(polizasEnDeuda);
+// Ejemplo de uso
+let listaDeItems = [
+  { cantidad: 2, descripcion: "Producto A", precioUnitario: 10 },
+  { cantidad: 1, descripcion: "Producto B", precioUnitario: 20 },
+  { cantidad: 3, descripcion: "Producto C", precioUnitario: 5 },
+];
+let factura = new ComprobanteFactura(1, new Date(), 0, listaDeItems);
+factura.importe = factura.calcularTotal();
+
+console.log(factura);
