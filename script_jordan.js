@@ -66,3 +66,35 @@ for (const poliza of polizas) {
 }
 
 console.log(polizasConCuotasEnDeuda);
+
+/*
+Crear una clase comprobante de factura, con id, fecha, importe, lista de items 
+(cantidad, descripcion, precio unitario) y una función para calcular el total de la 
+factura. Imprimir el resultado en la consola del navegador.
+*/
+
+class ComprobanteDeFactura {
+  constructor(id, fecha, importe, items) {
+    this.id = id;
+    this.fecha = fecha;
+    this.importe = importe;
+    this.items = items;
+  }
+
+  calcularTotal() {
+    let total = 0;
+    for (let i = 0; i < this.items.length; i++) {
+      total += this.items[i].cantidad * this.items[i].precioUnitario;
+    }
+    return total;
+  }
+}
+
+const items = [
+  { cantidad: 2, descripcion: 'Producto A', precioUnitario: 10 },
+  { cantidad: 1, descripcion: 'Producto B', precioUnitario: 5 },
+];
+const factura = new ComprobanteDeFactura(1, new Date(), 0, items);
+factura.importe = factura.calcularTotal();
+
+console.log(factura);
