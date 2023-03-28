@@ -1,0 +1,113 @@
+<!--Dada una lista de numero [3,6,-4,8,10,-15,30,0,-12,20]
+Calcular, utilizando un objeto para los resultados, cantidad de positivos y negativos, 
+total de positivos y negativos, cantidad y total de números mayores a 8. Mostrar el 
+objeto de los resultados en consola del navegador.-->
+<!-- <script>
+     const resultado = {
+         cantPositivos: 0,
+         cantNegativos: 0,
+         totalPositivos: 0,
+         totalNegativos: 0,
+         cantMay8: 0,
+         totMay8: 0
+     }
+
+     const lista = [3,6,-4,8,10,-15,30,0,-12,20]
+
+     lista.forEach(n => {
+         if(n > 0){
+             resultado.cantPositivos++
+             resultado.totalPositivos += n
+             if(n > 8){
+             resultado.cantMay8++
+             resultado.totMay8 += n
+         }
+         }else if(n < 0){
+             resultado.cantNegativos++
+             resultado.totalNegativos += n
+         }
+ })
+
+ console.log(resultado)
+
+</script> -->
+
+
+<!--Dado esta lista de objetos, crear una nueva lista de objetos, pero en vez de tener un 
+array de pagos, debería tener un array con las cuotas en deuda.
+[{poliza:123,patente:'AA345FD',cantidad_cuotas:12,pagadas[1,2,3,4]},
+ {poliza:124,patente:'AA500RR',cantidad_cuotas:6,pagadas[1,2,3,4]},
+ {poliza:125,patente:'AA200AA',cantidad_cuotas:12,pagadas[1,2,3,4,5,6,7,8,9,10,11,12]},
+ {poliza:126,patente:'AA300SH',cuotas:8,pagadas[1,2]} ] 
+Mostrar el resultado por consola-->
+
+<!-- <script>
+const lista = [{poliza:123,patente:'AA345FD',cantidad_cuotas:12,pagadas:[1,2,3,4]},
+ {poliza:124,patente:'AA500RR',cantidad_cuotas:6,pagadas:[1,2,3,4]},
+ {poliza:125,patente:'AA200AA',cantidad_cuotas:12,pagadas:[1,2,3,4,5,6,7,8,9,10,11,12]},
+ {poliza:126,patente:'AA300SH',cantidad_cuotas:8,pagadas:[1,2]} ] 
+
+let res =[]
+
+lista.forEach(p=> {
+    let aux = p.cantidad_cuotas - p.pagadas.length 
+    if(aux > 0){
+        let listAux = []
+        for (let index = 1; index <= p.cantidad_cuotas; index++) {
+            if(!p.pagadas.includes(index)){
+                listAux.push(index)
+            }
+        }
+
+        res.push({poliza: p.poliza,sin_pagar: listAux})
+    }
+})
+
+
+
+console.log(res)
+</script> -->
+
+<!--Crear una clase comprobante de factura, con id, fecha, importe, lista de items 
+(cantidad, descripcion, precio unitario) y una función para calcular el total de la 
+factura. Imprimir el resultado en la consola del navegador.-->
+
+<script>
+    class comprobante_de_factura {
+        constructor(id,fecha,items){
+            this.id = id
+            this.fecha = fecha
+            this.items = items
+            this.importe = this.calcImporte(this.items)
+        }
+        calcImporte (list)  {
+            let aux = 0
+            list.forEach(i => {
+                aux += i.cantidad * i.precioU  
+            });
+            return aux
+        }
+    }
+    class item{
+        constructor(can,desc,pre){
+            this.cantidad = can
+            this.descripcion = desc
+            this.precioU = pre
+        }
+    }
+
+    let aux = new item(5,"comida",15)
+
+    let lista = [aux]
+
+    let comprobante = new comprobante_de_factura(1,"hoy",lista)
+
+    console.log(comprobante)
+
+</script>
+
+
+
+
+
+
