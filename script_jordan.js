@@ -77,7 +77,7 @@ class ComprobanteDeFactura {
   constructor(id, fecha, importe, items) {
     this.id = id;
     this.fecha = fecha;
-    this.importe = importe;
+    this.importe = calcularTotal();
     this.items = items;
   }
 
@@ -94,7 +94,7 @@ const items = [
   { cantidad: 2, descripcion: 'Producto A', precioUnitario: 10 },
   { cantidad: 1, descripcion: 'Producto B', precioUnitario: 5 },
 ];
-const factura = new ComprobanteDeFactura(1, new Date(), 0, items);
-factura.importe = factura.calcularTotal();
+
+const factura = new ComprobanteDeFactura(1, new Date(), 0, items)
 
 console.log(factura);
