@@ -38,7 +38,7 @@ resultado.cantMayorOcho=calcantOcho
 console.log(resultado)
 
 
-/* Ejercicio 1
+/* Ejercicio 2
 Dado esta lista de objetos, crear una nueva lista de objetos, pero en vez de tener un
 array de pagos, debería tener un array con las cuotas en deuda.
 [{poliza:123,patente:'AA345FD',cantidad_cuotas:12,pagadas[1,2,3,4]},
