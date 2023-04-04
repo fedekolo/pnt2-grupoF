@@ -2,7 +2,7 @@
 
 
 
-/* Ejercicio 1
+/* Ejercicio  1
 Dada una lista de numero [3,6,-4,8,10,-15,30,0,-12,20]
 Calcular, utilizando un objeto para los resultados, cantidad de positivos y negativos,
 total de positivos y negativos, cantidad y total de números mayores a 8. Mostrar el
