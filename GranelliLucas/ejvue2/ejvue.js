@@ -27,8 +27,7 @@ class Client{
 createApp({
     data() {
         return {
-            clients: [new Client('Pedro', 24)],
-            onEdit: false
+            clients: [new Client('Pedro', 24)]
         }
     },
     methods:{
