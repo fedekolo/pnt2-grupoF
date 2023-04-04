@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<body>
+ <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+ 
+  <div id="app">
+    <ul>
+      <li v-for="item in list">
+        {{item}}
+      </li>
+    </ul>
+
+    <form @submit.prevent="agregar">
+      <input name="number" type="number" />
+
+      <button>Agregar</button>
+    </form>
+  </div>
+
+  <script src="component.js"></script>
+</body>
+</html>
