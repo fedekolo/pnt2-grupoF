@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+
+<body>
+
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+  <div id="app">
+
+    <ul>
+      <li v-for="numero in numeros">{{ numero }}</li>
+    </ul>
+    <input type="number" v-model="nuevoNumero">
+    <button @click="agregarNumero">Agregar número</button>
+
+
+    <h1 v-show=mostrarShow>{{ titulo }}</h1>
+    <h1 v-if=mostrarIf>{{ mensaje }}</h1>
+    <h1 v-else=mostrarIf>{{ mensaje }}</h1>
+    <h2>{{otroMensaje}}</h2>
+    <h2>{{array}}</h2>
+    <li v-for="menu in array">{{menu}}</li>
+    <br />
+    <br />
+    <table>
+      <tr>
+        <td>Nombre</td>
+        <td>Precio</td>
+      </tr>
+      <tr v-for="paseador in paseadores">
+        <td v-show="paseador.activo">{{paseador.nombre}}</td>
+        <td v-show="paseador.activo">{{paseador.precio}}</td>
+      </tr>
+    </table>
+    <button v-on:click="agregar">Borrar</button>
+    <br>
+    <br>
+    <br>
+    <label>Nombre</label>
+    <input v-model="nombre">
+    <br>
+    <label>Precio</label>
+    <input v-model="precio">
+    <br>
+    <br>
+    <button @click="agregarPaseador">Agregar</button>
+  </div>
+
+  <script>
+    const { createApp } = Vue
+    createApp({
+      data() {
+        return {
+
+          numeros: [4, 6, 3, 2, -3, 2],
+
+
+          mensaje: 'Hola Mundo',
+          titulo: 'Título de la página',
+          otroMensaje: "Otro mensaje",
+          array: ["Menu", "Opcion1", "Opcion2"],
+          mostrarShow: true,
+          mostrarIf: false,
+          numero: 0,
+          precio: 0,
+          nombre: "",
+          paseadores: [
+            { id: 1, activo: true, nombre: "Juan", precio: 159 },
+            { id: 2, activo: true, nombre: "Rodrigo", precio: 89 },
+            { id: 3, activo: true, nombre: "Juanita", precio: 120 },
+          ]
+        }
+      },
+      methods: {
+        agregarNumero() {
+          this.numeros.push(this.nuevoNumero);
+        },
+        agregar() { this.paseadores.push({ id: this.numero++, activo: true, nombre: "otro" + this.numero, precio: 200 }) },
+        agregarPaseador() {
+          let paseador = {
+            id: this.numero++,
+            nombre: this.nombre,
+            activo: true,
+            precio: this.precio,
+          }
+          this.paseadores.push(paseador)
+        }
+      }
+    }).mount('#app')
+  </script>
+</body>
+
+</html>
