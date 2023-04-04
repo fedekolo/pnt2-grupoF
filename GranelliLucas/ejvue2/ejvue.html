@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+
+<body>
+    <div id="app">
+
+        <form @submit.prevent="addClient">
+            <label for="num">Nombre</label>
+            <input type="text" name="name" v-model="name">
+
+            <label for="num">Edad</label>
+            <input type="number" name="age" v-model="age">
+
+            <button type="submit">Agregar</button>
+        </form>
+
+        <ul>
+            <li v-for="client in clients">
+                <div>
+                    <div v-if="!client.onEdit">
+                        <p>Id: {{ client.id }}</p>
+                        <p>Nombre: {{ client.name }}</p>
+                        <p>Edad: {{ client.age }}</p>
+                    </div>
+
+                    <div v-else>
+                        <p>Id: {{ client.id }}</p>
+                        <label for="name">Nombre:</label>
+                        <input v-model="client.name">
+                        <br>
+                        <label for="age">Edad:</label>
+                        <input v-model="client.age">
+                    </div>
+
+                    <button v-if="!client.onEdit" @click="client.edit()">Editar</button>
+                    <button v-else @click="editClient(client)">Guardar</button>
+
+                    <button @click="removeClient(client)">Eliminar</button>
+                </div>
+                <hr>
+            </li>
+        </ul>
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="ejvue.js"></script>
+</body>
+
+</html>
