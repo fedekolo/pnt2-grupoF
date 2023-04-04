@@ -1,22 +1,44 @@
 <!DOCTYPE html>
 
-<body>
- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
- 
-  <div id="app">
-    <ul>
-      <li v-for="item in list">
-        {{item}}
-      </li>
-    </ul>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
 
-    <form @submit.prevent="agregar">
-      <input name="number" type="number" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  </head>
 
-      <button>Agregar</button>
-    </form>
-  </div>
+  <body>
+    <div id="app">
+      <!-- Ejercicio 1  -->
+      <h2>Ejercicio 1</h2>
 
-  <script src="component.js"></script>
-</body>
+      <ul>
+        <li v-for="item in list">
+          {{ item }}
+        </li>
+      </ul>
+
+      <input v-model="number" type="number" />
+
+      <button @click="addNumber">Agregar</button>
+
+      <!-- Ejercicio 2  -->
+      <h2>Ejercicio 2</h2>
+
+      <ol>
+        <li v-for="client in clients">
+          {{ client }}
+        </li>
+      </ol>
+
+      <form @submit.prevent="addClient">
+        <input name="name" type="text" />
+        <input name="last_name" type="text" />
+
+        <button>Agregar cliente</button>
+      </form>
+    </div>
+
+    <script src="component.js"></script>
+  </body>
 </html>
