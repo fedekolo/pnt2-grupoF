@@ -1,14 +1,73 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <script src="index.js"></script>
-  <body>
-    <h1>PNT2 - GRUPO F</h1>
+<body>
 
-  </body>
+ <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+
+ <div id="app">
+    <h1 v-show=mostrarShow>{{ titulo }}</h1>
+    <h1 v-if=mostrarIf>{{ mensaje }}</h1>
+    <h1 v-else=mostrarIf>{{ mensaje }}</h1>
+    <h2>{{otroMensaje}}</h2>
+    <h2>{{array}}</h2>
+    <li v-for="menu in array">{{menu}}</li>
+    <br/>
+    <br/>
+    <table>
+      <tr><td>Nombre</td><td>Precio</td></tr>       
+      <tr v-for="paseador in paseadores">
+        <td v-show="paseador.activo">{{paseador.nombre}}</td>
+        <td v-show="paseador.activo">{{paseador.precio}}</td>
+      </tr>      
+    </table>
+    <button v-on:click="agregar" >Borrar</button>
+    <br>
+    <br>
+    <br>
+    <label>Nombre</label>
+    <input v-model="nombre">
+    <br>
+    <label>Precio</label>
+    <input v-model="precio">
+    <br>
+    <br>
+    <button @click="agregarPaseador">Agregar</button>
+  </div>
+
+ <script>
+ const { createApp } = Vue
+  createApp({
+  data() {
+  return {
+    mensaje: 'Hola Mundo',
+    titulo: 'Título de la página',
+    otroMensaje: "Otro mensaje",
+    array: ["Menu", "Opcion1", "Opcion2"], 
+    mostrarShow: true,
+    mostrarIf: false,
+    numero: 0,
+    precio: 0,
+    nombre: "",
+    paseadores: [
+      {id: 1, activo: true, nombre: "Juan", precio: 159},
+      {id: 2, activo: true, nombre: "Rodrigo", precio: 89},
+      {id: 3, activo: true, nombre: "Juanita", precio: 120},      
+    ]
+  }
+  },
+  methods:{
+    agregar() {this.paseadores.push({id: this.numero++, activo:true, nombre: "otro"+this.numero, precio: 200})},
+    agregarPaseador(){
+      let paseador = {
+        id: this.numero++,
+        nombre: this.nombre,
+        activo: true,
+        precio: this.precio,
+      }
+      this.paseadores.push(paseador)
+    }
+  }
+  }).mount('#app')
+ </script>
+</body>
 </html>
+
