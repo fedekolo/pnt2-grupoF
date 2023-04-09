@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<body>
+<script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+<div id="app">
+
+    <h2>Ejercicio 2</h2>
+
+    <li v-for="cliente in listaDeClientes">{{cliente.nombre + " " + cliente.edad}}
+    <button v-on:click="modificarCliente(cliente.id)">Editar</button>  
+    <button v-on:click="eliminarCliente(cliente.id)">Eliminar</button>
+    </li>
+    
+    <h3>Ingrese nombre<input v-model="nombre"></h3>
+    <h3>Ingrese edad  <input v-model="edad"></h3>
+    <h2><button v-on:click="agregarCliente">AgregarNuevo</button></h2>
+
+
+</div>
+<script>
+const { createApp } = Vue
+createApp({
+data() {
+return {
+listaDeClientes:[
+{id:1,nombre:"Juan",edad:30},
+{id:2,nombre:"Pedro",edad:15},
+{id:3,nombre:"Marcelo",edad:35},
+{id:4,nombre:"Sebastian",edad:40},
+{id:5,nombre:"Martin",edad:45},
+],
+
+
+idNuevo:5,
+nombre:"",
+edad:0,
+
+
+
+
+}
+},
+methods:{
+    agregarCliente(){
+    this.listaDeClientes.push({id:++this.idNuevo,nombre:this.nombre,edad:this.edad})
+},
+
+eliminarCliente(id){
+    this.listaDeClientes.splice(this.listaDeClientes.findIndex(elemento => elemento.id == id),1)
+},
+modificarCliente(id){
+    var indice = this.listaDeClientes.findIndex(elemento => elemento.id == id)
+    this.listaDeClientes[indice].edad = this.edad,
+    this.listaDeClientes[indice].nombre = this.nombre
+}
+
+
+}
+}).mount('#app')
+</script>
+</body>
+</html>

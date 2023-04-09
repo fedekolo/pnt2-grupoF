@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+
+<body>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <div id="app">
+        <ul>
+            <li v-for = "item in lista">{{item}}</li>
+        </ul>
+        <input v-model="numero" type="number">
+        <button @click="agregarNumero">agregar</button>
+    </div>
+    <script src="ej1vue.js"></script>
+</body>
+
+</html>
+
+<!-- Dada esta lista de numeros: [4,6,3,2,-3,2]
+1- Cargar esta lista en un array del objeto vue.
+2- Mostrar la lista con un li
+3- Pedir un numero y agregarlo a la lista. -->

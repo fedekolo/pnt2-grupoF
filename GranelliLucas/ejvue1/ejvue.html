@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<body>
+
+    <div id="app">
+
+        <form @submit.prevent="addNumber">
+            <label for="num">Numero</label>
+            <input type="number" name="num" v-model="num">
+
+            <button type="submit">Agregar</button>
+        </form>
+
+        <button @click="removeNumber">Eliminar</button>
+
+        <ul>
+            <li v-for="num in list">
+                {{num}}
+            </li>
+        </ul>
+
+    </div>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="ejvue.js"></script>
+</body>
+
+</html>

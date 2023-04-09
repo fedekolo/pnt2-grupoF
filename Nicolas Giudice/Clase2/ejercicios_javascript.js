@@ -125,10 +125,10 @@ class ComprobanteFactura {
     this.id = id;
     this.fecha = fecha;
     this.items = items;
-    this.importe = this.calcularImporte(items);
+    this.importe = this.#calcularImporte(items);
   }
 
-  calcularImporte(list) {
+  #calcularImporte(list) {
     return list.reduce((acc, act) => {
       return acc + act.cant * act.precioUni;
     }, 0);
