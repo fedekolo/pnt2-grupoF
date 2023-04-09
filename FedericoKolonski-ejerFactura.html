@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        class comprobanteFactura {
+            constructor(id,fecha,items) {
+                this.id = id;
+                this.fecha = fecha;
+                this.importe = 0;
+                this.items = items;
+            }
+
+            calcularTotal() {
+                let total = 0;
+                this.items.forEach(e => {
+                    total += e.cantidad * e.precioUnitario;
+                });
+                return total;
+            }
+
+            getImporte() {
+                this.importe = this.calcularTotal();
+                return this.importe;
+            }
+        }
+
+        let comprobante = new comprobanteFactura(
+            123,
+            "21/3/2023",
+            [
+                {
+                    cantidad: 2,
+                    descripcion: "jabon",
+                    precioUnitario: 500
+                },
+                {
+                    cantidad: 3,
+                    descripcion: "sabanas",
+                    precioUnitario: 5000
+                }
+            ]
+        );
+
+        console.log(comprobante.getImporte())
+
+    </script>
+</body>
+</html>
