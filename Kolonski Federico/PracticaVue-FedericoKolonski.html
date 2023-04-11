@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica Vue</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h1>Ejercicio 1</h1>
+        <ul v-for="numero in numeros">
+            <li>{{ numero }}</li>
+        </ul>
+        <input v-model="numeroNuevo">
+        <button @click="agregarNumero">Agregar número</button>
+
+        <h1>Ejercicio 2</h1>
+        <ul v-for="cliente in clientes">
+            <li>{{ cliente.nombre }}</li>
+            <li>{{ cliente.edad }}</li>
+            <input v-model="nombreModificado">
+            <input v-model="edadModificado">
+            <button @click="modificarCliente(cliente.id)">Modificar cliente</button>
+            <button @click="eliminarCliente(cliente.id)">Eliminar cliente</button>
+        </ul>
+        <input v-model="nombreNuevo">
+        <input v-model="edadNueva">
+        <button @click="agregarCliente">Agregar cliente</button>
+    </div>
+    
+    <script>
+        const { createApp } = Vue
+        createApp({
+        data() {
+            return {
+                numeros: [4,6,3,2,-3,2],
+                numeroNuevo: 0,
+                clientes: [
+                    {
+                        id: 1,
+                        nombre: "Fede",
+                        edad: 28
+                    },
+                    {
+                        id: 2,
+                        nombre: "Nico",
+                        edad: 32
+                    },
+                    {
+                        id: 3,
+                        nombre: "Lucas",
+                        edad: 34
+                    }
+                ],
+                nombreNuevo: "",
+                edadNueva: 0,
+                nombreModificado: "",
+                edadModificado: 0
+            }
+            },
+            methods:{
+                agregarNumero() {this.numeros.push(this.numeroNuevo)},
+                agregarCliente() {
+                    let ultimoId = this.clientes.lenght===0 ? 1 : this.clientes[this.clientes.length-1].id
+                    this.clientes.push({id: ultimoId+1, nombre: this.nombreNuevo, edad: this.edadNueva})
+                },
+                eliminarCliente(id) {
+                    const nuevosClientes = this.clientes.filter(e => e.id !== id) 
+                    this.clientes = nuevosClientes
+                },
+                modificarCliente(id) {
+                    const nuevosClientes = this.clientes.filter(e => e.id !== id) 
+                    this.clientes = nuevosClientes
+                    this.clientes.push({id: this.clientes.length+1, nombre: this.nombreModificado, edad: this.edadModificado})
+                }
+            }
+        }).mount('#app')
+    </script>
+</body>
+</html>
